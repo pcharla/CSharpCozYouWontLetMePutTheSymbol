@@ -27,3 +27,63 @@ const float Pi = 3.14f;
 camelcase: firstName
 pascalcase: FirstName - use it for constants
 hungarian notation: strFirstName (don't use)
+https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/built-in-types-table
+double -default type for real numbers
+float number  = 1.2f; --> f=> treat this number as  a flota and not double
+decimal number  = 1.2m;
+Non Primitive: 
+String
+Array
+Enum
+Class
+overflowing: exceeding the boundary memory capabilities of datatypes, in C# by default we do not have overflow check
+
+checked //overflow will not happen but exception will be thrown which we can handle
+{
+byte number = 255;
+number += 1;
+}
+Scope: where a constant or variable has meaning or is accessible
+
+before accesing  a varibale declare it and set (initialize/assign) it
+character :  single quotes, string : double quotes
+if yo have to use reserved words for anything use @ before that and use it like @int
+declaring with var keyborad lets compiler decide and tel what kind of datatype it is
+
+Struct: 
+
+Type conversion:
+Implicit: byte b = 1; int i =b; (no data loss and types are compatible)
+in cas of data loss:
+int i;
+byte b= (byte) i ; //casting, does conversion anyway despite data loss
+Explicit(casting)
+
+conversion between non-compatible types:
+string and int for example
+str t = "123"
+int i = (int) t // wont work coz of non-compatible types
+so int i  = convert.Toint32(t)
+int i = int.parse(t)
+Operators:
+
+Arithmatic:
+Comparison:
+Assignment:
+Logical: &&, ||, !
+Bitwise: &, | --> lower level programing -like working with windows API, SOCKETS, encryption
+
+use IS/HAS for boolean result names
+
+floating division with integers: cast them : (float) a/ (float) b;
+
+
+comments to explain whys, hows, constraints etc not the whats
+C# is a statically typed language: once you delare a variable, u nned to specify its type (that type cannot change during the lifetime of that variable)
+
+
+
+
+
+
+
