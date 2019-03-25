@@ -1,0 +1,143 @@
+Value type vs reference type/ Memory management of C# 
+
+Classes: Blueprints from which we create objects. object is an instance of  a class. In reality objects are taling to each other and 
+collaborating to bring out a functionality.
+public class person{ //access modifier, class keyword, identifier
+
+}
+//creating objects => we need to allocate memmory explicitly to that object (new operartor) (do not worry about deallocating)
+Person person =  new Person();
+
+
+CLR=>Garbage Collection => remove objects that are not being used
+y static modifier: when we want onlya  single instance of that should be existing in memory
+if a method in the class has static keyword then we can access that method from original class itself, we do not have to create an object
+to access a static member infct we cannot access static memebers from objects
+Eg: all methods of the console class are declared as static// we have only one console when we run the application
+Eg: Program class main method: there is only one instance of the main method, current datetime 
+Create class at namespace level, convention : 1 class per file
+
+//combine related fields and methods together, use it when you want to create a light weight object
+Structures/ Struct:
+public struct sometihing {
+
+}
+
+Array: Data structure to store a collection variables of the same type
+int[] numbers= new int[3] (this is to set the size of an array), they have fixed size, speciifed during declaration and cannot change
+int[] numbers= new int[3] {1,2,3}; //object initialization syntax
+var numbers = new int[3]
+numbers[0]= 1 //set the first number
+when an array is initialized all the values are default set to datattype of that array (int=> zero)
+default value of bool s false;
+
+Strings: strings are immutable
+var nums = new int[3] {1,2,3};
+string list = string.Join(',', nums);
+
+escape characters: \n, \t, \\, \', \"
+
+Verbatim string:
+string path = @"c:\projects\project1\folder1";
+primitive types are all structures
+u can use string keyword (in c#)/ String (.NET framework) class to craete a string
+Int32 class in .NET framework or int keyword from c# -  all the same
+verbatim -extra backlash, new line, tab -no need of that when using verbatim string'
+
+Enum:
+
+a set of name value pairs/constants, internally an integrer
+//use where there are a number of related constants, instaed of declaring  multiple constants, declare an enum
+public enum shippingmethods : byte(if u want it)
+{
+fatmail = 1, 
+priotitymail = 2,
+slowmail = 3
+}
+
+var mymethod = shipiingmethods.slowmail;
+
+Enum -> new type define at the namespace level
+consol.write line always calls tostring method on any value you passed in 
+prsing- > getting a string and converting that to a differet=nt tyope
+method has two versions - we call overloads
+----------------------------------------------------------------------------------------------------------------------------------------
+public enum shippingmethods
+{
+fatmail = 1, 
+priotitymail = 2,
+slowmail = 3
+}
+
+in main function:
+//enum to and from integer
+ var method = shippingmethods.fatmail;
+ console.writeline((int)method);//casting
+ 
+ var methodid = 3;
+ console.writeline((shippingmethods)methodid);//casting
+ //enum to and from string
+ 
+ console.writeline(method.Tostring)
+
+strint to enum (shipping method enumeration)
+var method = "fatshipping";
+var methodconverted = (shippingmethods)enum.parse( typeof(hsippingmethods), method);
+--------------------------------------------------------------------------------------------
+
+Reference types and value types:
+arrays(System.Array)
+strings(System.String)
+
+essentially w ehave two main types from which we create new types:
+reference types  value types
+classes          structures
+arrays          primiitve types
+strings         small utility <8 bytes so all primitives are structures in .NET
+custom classes          custom structures
+
+these are treated differently at run time in terms of memory management
+
+value type- memory auto allocate don e on stack
+when runs out of scope, memory ato cleared by clr
+
+reference- programmer needs to allocate (new operator- we tell clr to allocate memory to this object)
+memory will be allocated on heap
+this unlike stack is more sustainable
+object exists in memory for sometime not removed immediately after it goes out of scope
+- later garbage collection removes it (once in a  wile clr looks at unused objects)
+
+
+when you copy a value type to a different variable, a copy of that value is taken and stored in the target varibale
+new location in memory in stack is created and contents are cpied to that new location piunted by new variable
+//since it is copied nd stoied they are independednt of each other
+
+var arr1= new int[3] {1,2,3};
+var arr2 = arr1;
+arr2[0] = 0;
+1st step:
+craete a mmory object is craeted on heap where the actyal list/array exists
+then its varibale(arr1) is created in stack whose value points to address of heap memory (physical address object/ memory address)
+2nd step:
+
+when you copy that to another varibale, run time creates another variable on stack which has contenst heap emory address
+both variales have memory address of list pointing to same object/location (which points to that heap location (addres in memory)
+)
+so they are called reference types, when we copy them a copy is not created of value but (memory address is copied)
+reference of them is created(extra but same thing) and the
+original object can be changed using any of these tow refernce variables
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
